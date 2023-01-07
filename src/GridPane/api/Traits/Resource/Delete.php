@@ -1,9 +1,9 @@
 <?php
 
-namespace GridPane\Api\Traits\Resource;
+namespace Gridpane\Api\Traits\Resource;
 
-use GridPane\Api\Exceptions\MissingParametersException;
-use GridPane\Api\Exceptions\RouteException;
+use Gridpane\Api\Exceptions\MissingParametersException;
+use Gridpane\Api\Exceptions\RouteException;
 
 trait Delete
 {

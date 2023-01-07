@@ -1,6 +1,6 @@
 <?php
 
-namespace GridPane\Console\Matchers;
+namespace Gridpane\Console\Matchers;
 
 use InvalidArgumentException;
 use Psy\TabCompletion\Matcher\AbstractContextAwareMatcher;

@@ -1,8 +1,8 @@
 <?php
 
-namespace GridPane\Console;
+namespace Gridpane\Console;
 
-use GridPane\Console\Matchers\SubResourceMatcher;
+use Gridpane\Console\Matchers\SubResourceMatcher;
 use Psy\TabCompletion\Matcher\ObjectAttributesMatcher;
 use Psy\TabCompletion\Matcher\ObjectMethodsMatcher;
 
@@ -15,6 +15,7 @@ class Shell extends \Psy\Shell
     {
         $tabCompletionMatchers = parent::getTabCompletionMatchers();
         $tabCompletionMatchers[] = new SubResourceMatcher();
+
         return array_filter($tabCompletionMatchers, function ($matcher) {
             return ! ($matcher instanceof ObjectMethodsMatcher || $matcher instanceof ObjectAttributesMatcher);
         });

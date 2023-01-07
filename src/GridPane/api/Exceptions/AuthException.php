@@ -1,6 +1,6 @@
 <?php
 
-namespace GridPane\Api\Exceptions;
+namespace Gridpane\Api\Exceptions;
 
 /**
  * AuthException is for auth specific errors

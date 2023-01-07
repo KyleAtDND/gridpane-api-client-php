@@ -1,6 +1,6 @@
 <?php
 
-namespace GridPane\Api\Exceptions;
+namespace Gridpane\Api\Exceptions;
 
 class RouteException extends \Exception
 {

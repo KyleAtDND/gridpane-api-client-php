@@ -1,17 +1,17 @@
 <?php
 
-namespace GridPane\Api;
+namespace Gridpane\Api;
 
 /*
  * Dead simple autoloader:
  * spl_autoload_register(function($c){@include 'src/'.preg_replace('#\\\|_(?!.+\\\)#','/',$c).'.php';});
  */
 
-use GridPane\Api\Exceptions\AuthException;
-use GridPane\Api\Middleware\RetryHandler;
-use GridPane\Api\Resources\Core\Server;
-use GridPane\Api\Traits\Utility\InstantiatorTrait;
-use GridPane\Api\Utilities\Auth;
+use Gridpane\Api\Exceptions\AuthException;
+use Gridpane\Api\Middleware\RetryHandler;
+use Gridpane\Api\Resources\Core\Server;
+use Gridpane\Api\Traits\Utility\InstantiatorTrait;
+use Gridpane\Api\Utilities\Auth;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\HandlerStack;
 
@@ -162,7 +162,7 @@ class HttpClient
      */
     public function getUserAgent()
     {
-        return 'GridPaneAPI PHP '.self::VERSION;
+        return 'GridpaneAPI PHP '.self::VERSION;
     }
 
     /**
@@ -235,8 +235,8 @@ class HttpClient
      * @param  array  $queryParams
      * @return \stdClass | null
      *
-     * @throws \GridPane\Api\Exceptions\AuthException
-     * @throws \GridPane\Api\Exceptions\ApiResponseException
+     * @throws \Gridpane\Api\Exceptions\AuthException
+     * @throws \Gridpane\Api\Exceptions\ApiResponseException
      */
     public function get($endpoint, $queryParams = [])
     {
@@ -257,8 +257,8 @@ class HttpClient
      * @param  array  $options
      * @return null|\stdClass
      *
-     * @throws \GridPane\Api\Exceptions\AuthException
-     * @throws \GridPane\Api\Exceptions\ApiResponseException
+     * @throws \Gridpane\Api\Exceptions\AuthException
+     * @throws \Gridpane\Api\Exceptions\ApiResponseException
      */
     public function post($endpoint, $postData = [], $options = [])
     {
@@ -283,8 +283,8 @@ class HttpClient
      * @param  array  $putData
      * @return \stdClass | null
      *
-     * @throws \GridPane\Api\Exceptions\AuthException
-     * @throws \GridPane\Api\Exceptions\ApiResponseException
+     * @throws \Gridpane\Api\Exceptions\AuthException
+     * @throws \Gridpane\Api\Exceptions\ApiResponseException
      */
     public function put($endpoint, $putData = [])
     {
@@ -303,8 +303,8 @@ class HttpClient
      * @param $endpoint
      * @return null
      *
-     * @throws \GridPane\Api\Exceptions\AuthException
-     * @throws \GridPane\Api\Exceptions\ApiResponseException
+     * @throws \Gridpane\Api\Exceptions\AuthException
+     * @throws \Gridpane\Api\Exceptions\ApiResponseException
      */
     public function delete($endpoint)
     {

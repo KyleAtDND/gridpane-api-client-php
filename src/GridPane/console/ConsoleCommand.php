@@ -1,9 +1,9 @@
 <?php
 
-namespace GridPane\Console;
+namespace Gridpane\Console;
 
-use GridPane\Api\Exceptions\ApiResponseException;
-use GridPane\Api\HttpClient;
+use Gridpane\Api\Exceptions\ApiResponseException;
+use Gridpane\Api\HttpClient;
 use Psy\Configuration;
 use RuntimeException;
 use Symfony\Component\Console\Command\Command;

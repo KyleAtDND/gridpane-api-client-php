@@ -1,9 +1,9 @@
 <?php
 
-namespace GridPane\Api;
+namespace Gridpane\Api;
 
-use GridPane\Api\Exceptions\ApiResponseException;
-use GridPane\Api\Exceptions\AuthException;
+use Gridpane\Api\Exceptions\ApiResponseException;
+use Gridpane\Api\Exceptions\AuthException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\LazyOpenStream;
 use GuzzleHttp\Psr7\Request;

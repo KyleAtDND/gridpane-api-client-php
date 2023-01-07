@@ -1,8 +1,8 @@
 <?php
 
-namespace GridPane\Api\Traits\Resource;
+namespace Gridpane\Api\Traits\Resource;
 
-use GridPane\Api\Exceptions\RouteException;
+use Gridpane\Api\Exceptions\RouteException;
 
 trait FindAll
 {
@@ -13,8 +13,8 @@ trait FindAll
      * @param  string  $routeKey
      * @return \stdClass | null
      *
-     * @throws \GridPane\Api\Exceptions\AuthException
-     * @throws \GridPane\Api\Exceptions\ApiResponseException
+     * @throws \Gridpane\Api\Exceptions\AuthException
+     * @throws \Gridpane\Api\Exceptions\ApiResponseException
      */
     public function findAll(array $params = [], $routeKey = __FUNCTION__)
     {

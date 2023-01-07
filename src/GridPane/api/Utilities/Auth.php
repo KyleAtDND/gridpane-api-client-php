@@ -1,8 +1,8 @@
 <?php
 
-namespace GridPane\Api\Utilities;
+namespace Gridpane\Api\Utilities;
 
-use GridPane\Api\Exceptions\AuthException;
+use Gridpane\Api\Exceptions\AuthException;
 use Psr\Http\Message\RequestInterface;
 
 /**

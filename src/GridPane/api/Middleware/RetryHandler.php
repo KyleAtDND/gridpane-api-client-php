@@ -1,6 +1,6 @@
 <?php
 
-namespace GridPane\Api\Middleware;
+namespace Gridpane\Api\Middleware;
 
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\Request;

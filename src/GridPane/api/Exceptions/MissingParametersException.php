@@ -1,6 +1,6 @@
 <?php
 
-namespace GridPane\Api\Exceptions;
+namespace Gridpane\Api\Exceptions;
 
 /**
  * MissingParametersException extends the Exception class with simplified messaging

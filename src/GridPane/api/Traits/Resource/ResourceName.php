@@ -1,6 +1,6 @@
 <?php
 
-namespace GridPane\Api\Traits\Resource;
+namespace Gridpane\Api\Traits\Resource;
 
 /**
  * Trait ResourceName

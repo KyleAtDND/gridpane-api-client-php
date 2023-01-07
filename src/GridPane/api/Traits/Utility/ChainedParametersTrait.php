@@ -1,14 +1,14 @@
 <?php
 
-namespace GridPane\Api\Traits\Utility;
+namespace Gridpane\Api\Traits\Utility;
 
 /**
  * The chained parameters trait which has helper methods for getting the parameters passed through chaining.
  * An example would be a call `$client->ticket(2)->comments(3)->author();` would create an Author object with
  * chained parameters (An Array):
  *  [
- *      'GridPane\Api\Tickets' => 2,
- *      'GridPane\Api\Comments' => 3
+ *      'Gridpane\Api\Tickets' => 2,
+ *      'Gridpane\Api\Comments' => 3
  *  ]
  */
 trait ChainedParametersTrait
@@ -63,7 +63,7 @@ trait ChainedParametersTrait
      *
      * @param  array  $params The existing parameters
      * @param  array  $map    An array describing what parameter key corresponds to which classId
-     *                      e.g. ['ticket_id' => 'GridPane\Api\Ticket']
+     *                      e.g. ['ticket_id' => 'Gridpane\Api\Ticket']
      *                      normal usage would be ['id' => $this::class]
      * @return array
      */
