@@ -55,8 +55,8 @@ class Auth
         $this->authStrategy = $strategy;
 
         if ($strategy == self::BEARER) {
-            if (! array_key_exists('token', $options)) {
-                throw new AuthException('Please supply `token` for bearer auth.');
+            if (! array_key_exists('bearer', $options)) {
+                throw new AuthException('Please supply `bearer` for bearer auth.');
             }
         }
 
