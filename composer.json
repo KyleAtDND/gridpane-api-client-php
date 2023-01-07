@@ -1,7 +1,7 @@
 {
     "name": "kyleatdnd/gridpane-api-client-php",
     "type": "library",
-    "description": "Gridpane API PHP SDK",
+    "description": "GridPane API PHP SDK",
     "minimum-stability": "alpha",
     "keywords": [
         "gridpane"
@@ -29,8 +29,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Gridpane\\Api\\": "src/",
-            "Gridpane\\Console\\": "src/"
+            "GridPane\\Api\\": "src/",
+            "GridPane\\Console\\": "src/"
         }
     }
 }
