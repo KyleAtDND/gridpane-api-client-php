@@ -30,7 +30,7 @@ require 'vendor/autoload.php';
 
 use GridPane\API\HttpClient as GridPaneAPI;
 
-$token     = "6wiIBWbGkBMo1mRDMuVwkw1EPsNkeUj95PIz2akv"; // replace this with your GridPane Bearer token
+$token     = "6wiIBWbGkBMo1mRDMuVwkw1EPsNkeUj95PIz2akv"; // replace this with your GridPane Personal Access/Bearer token
 
 $client = new GridPaneAPI();
 $client->setAuth('bearer', ['token' => $token]);
@@ -111,7 +111,7 @@ speed up the process and would make sure that everybody follows the community's 
 ### Debugging
 
 To help would be contributors, we've added a REPL tool. It is a simple wrapper for [psysh](http://psysh.org) and symfony's console.
-On your terminal, run `bin/console <subdomain> <email> <api token>`. This would automatically create an instance of `GridPane\API\HttpClient` on $client variable.
+On your terminal, run `bin/console <bearer token>`. This would automatically create an instance of `GridPane\API\HttpClient` on $client variable.
 After that you would be able to enter any valid php statement. The goal of the tool is to speed up the process in which developers
 can experiment on the code base.
 
