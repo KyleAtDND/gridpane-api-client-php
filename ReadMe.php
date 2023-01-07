@@ -60,7 +60,7 @@ $newServer = $client->servers()->create([
 print_r($newServer);
 
 // Update a server
-$client->servers()->update(1,[
+$client->servers()->update(12345,[
     'security_updates_reboot_time' => '04:00'
 ]);
 
