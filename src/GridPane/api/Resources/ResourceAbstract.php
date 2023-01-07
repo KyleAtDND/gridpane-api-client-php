@@ -1,14 +1,14 @@
 <?php
 
-namespace GridPane\API\Resources;
+namespace GridPane\Api\Resources;
 
 use Doctrine\Inflector;
 use Doctrine\Inflector\CachedWordInflector;
 use Doctrine\Inflector\Rules\English;
 use Doctrine\Inflector\RulesetInflector;
-use GridPane\API\Exceptions\RouteException;
-use GridPane\API\HttpClient;
-use GridPane\API\Traits\Utility\ChainedParametersTrait;
+use GridPane\Api\Exceptions\RouteException;
+use GridPane\Api\HttpClient;
+use GridPane\Api\Traits\Utility\ChainedParametersTrait;
 
 /**
  * Abstract class for all endpoints
@@ -33,7 +33,7 @@ abstract class ResourceAbstract
     protected $objectNamePlural;
 
     /**
-     * @var \GridPane\API\HttpClient
+     * @var \GridPane\Api\HttpClient
      */
     protected $client;
 
@@ -97,7 +97,7 @@ abstract class ResourceAbstract
      *    $client->ticket()->comments();
      *    Where ticket would have a comments as a valid sub resource.
      *    The array would look like:
-     *      ['comments' => '\GridPane\API\Resources\TicketComments']
+     *      ['comments' => '\GridPane\Api\Resources\TicketComments']
      *
      * @return array
      */
@@ -277,10 +277,10 @@ abstract class ResourceAbstract
     /**
      * Wrapper for common GET requests
      *
-     * @param       $route
-     * @param array $params
-     *
+     * @param    $route
+     * @param  array  $params
      * @return \stdClass | null
+     *
      * @throws ResponseException
      * @throws \Exception
      */

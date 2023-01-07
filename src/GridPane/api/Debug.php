@@ -1,6 +1,6 @@
 <?php
 
-namespace GridPane\API;
+namespace GridPane\Api;
 
 /**
  * Debug helper class

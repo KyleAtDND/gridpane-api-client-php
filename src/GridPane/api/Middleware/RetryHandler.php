@@ -1,6 +1,6 @@
 <?php
 
-namespace GridPane\API\Middleware;
+namespace GridPane\Api\Middleware;
 
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\Request;
@@ -9,7 +9,7 @@ use GuzzleHttp\RetryMiddleware;
 class RetryHandler
 {
     /**
-     * @var array $timeoutCodes list of timeout status codes: Request Timeout, Authentication Timeout, Gateway Timeout
+     * @var array list of timeout status codes: Request Timeout, Authentication Timeout, Gateway Timeout
      */
     private $timeoutCodes = [408, 419, 504];
 
@@ -25,7 +25,7 @@ class RetryHandler
     /**
      * RetryHandler constructor.
      *
-     * @param array $config
+     * @param  array  $config
      */
     public function __construct(array $config = [])
     {
@@ -70,8 +70,7 @@ class RetryHandler
     /**
      * Called when the middleware is handled by the client.
      *
-     * @param callable $handler
-     *
+     * @param  callable  $handler
      * @return RetryMiddleware
      */
     public function __invoke(callable $handler)
@@ -85,12 +84,11 @@ class RetryHandler
      * Checks if the exception thrown warrants a retry
      *
      * @param $exception
-     *
      * @return bool
      */
     private function isRetryableException($exception)
     {
-        if (!$this->options['exceptions']) {
+        if (! $this->options['exceptions']) {
             return true;
         }
 

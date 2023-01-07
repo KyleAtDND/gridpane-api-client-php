@@ -1,9 +1,9 @@
 <?php
 
-namespace GridPane\API\Traits\Utility;
+namespace GridPane\Api\Traits\Utility;
 
-use GridPane\API\HttpClient;
-use GridPane\API\Resources\ResourceAbstract;
+use GridPane\Api\HttpClient;
+use GridPane\Api\Resources\ResourceAbstract;
 
 /**
  * The Instantiator trait which has the magic methods for instantiating Resources

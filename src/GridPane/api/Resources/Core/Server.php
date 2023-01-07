@@ -1,11 +1,11 @@
 <?php
 
-namespace GridPane\API\Resources\Core;
+namespace GridPane\Api\Resources\Core;
 
-use GridPane\API\Exceptions\ResponseException;
-use GridPane\API\Resources\ResourceAbstract;
-use GridPane\API\Traits\Resource\Defaults;
-use GridPane\API\Traits\Utility\InstantiatorTrait;
+use GridPane\Api\Exceptions\ResponseException;
+use GridPane\Api\Resources\ResourceAbstract;
+use GridPane\Api\Traits\Resource\Defaults;
+use GridPane\Api\Traits\Utility\InstantiatorTrait;
 
 /**
  * The Tickets class exposes key methods for reading and updating ticket data
@@ -45,8 +45,8 @@ class Server extends ResourceAbstract
      *
      * @throws ResponseException
      * @throws \Exception
-     * @throws \GridPane\API\Exceptions\AuthException
-     * @throws \GridPane\API\Exceptions\ApiResponseException
+     * @throws \GridPane\Api\Exceptions\AuthException
+     * @throws \GridPane\Api\Exceptions\ApiResponseException
      */
     public function create(array $params)
     {

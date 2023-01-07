@@ -1,6 +1,6 @@
 <?php
 
-namespace GridPane\API\Exceptions;
+namespace GridPane\Api\Exceptions;
 
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\RequestException;
@@ -8,8 +8,6 @@ use GuzzleHttp\Exception\ServerException;
 
 /**
  * Class ApiResponseException
- *
- * @package GridPane\API\Exceptions
  */
 class ApiResponseException extends \Exception
 {
@@ -23,18 +21,18 @@ class ApiResponseException extends \Exception
         $message = $e->getMessage();
 
         if ($e instanceof ClientException) {
-            $response           = $e->getResponse();
-            $responseBody       = $response->getBody()->getContents();
+            $response = $e->getResponse();
+            $responseBody = $response->getBody()->getContents();
             $this->errorDetails = $responseBody;
-            $message .= ' [details] ' . $this->errorDetails;
+            $message .= ' [details] '.$this->errorDetails;
         } elseif ($e instanceof ServerException) {
             $message .= ' [details] GridPane may be experiencing internal issues or undergoing scheduled maintenance.';
         } elseif (! $e->hasResponse()) {
             $request = $e->getRequest();
             // Unsuccessful response, log what we can
-            $message .= ' [url] ' . $request->getUri();
-            $message .= ' [http method] ' . $request->getMethod();
-            $message .= ' [body] ' . $request->getBody()->getContents();
+            $message .= ' [url] '.$request->getUri();
+            $message .= ' [http method] '.$request->getMethod();
+            $message .= ' [body] '.$request->getBody()->getContents();
         }
 
         parent::__construct($message, $e->getCode(), $e);

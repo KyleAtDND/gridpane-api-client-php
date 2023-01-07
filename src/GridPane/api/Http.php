@@ -1,18 +1,17 @@
 <?php
 
-namespace GridPane\API;
+namespace GridPane\Api;
 
+use GridPane\Api\Exceptions\ApiResponseException;
+use GridPane\Api\Exceptions\AuthException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\LazyOpenStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Utils;
 use Psr\Http\Message\StreamInterface;
-use GridPane\API\Exceptions\ApiResponseException;
-use GridPane\API\Exceptions\AuthException;
 
 /**
  * HTTP functions via curl
- * @package GridPane\API
  */
 class Http
 {
@@ -21,16 +20,16 @@ class Http
     /**
      * Use the send method to call every endpoint
      *
-     * @param HttpClient $client
-     * @param string     $endPoint E.g. "/tickets.json"
-     * @param array      $options
+     * @param  HttpClient  $client
+     * @param  string  $endPoint E.g. "/tickets.json"
+     * @param  array  $options
      *                             Available options are listed below:
      *                             array $queryParams Array of unencoded key-value pairs, e.g. ["ids" => "1,2,3,4"]
      *                             array $postFields Array of unencoded key-value pairs, e.g. ["filename" => "blah.png"]
      *                             string $method "GET", "POST", etc. Default is GET.
      *                             string $contentType Default is "application/json"
-     *
      * @return \stdClass | null The response body, parsed from JSON into an object. Also returns null if something went wrong
+     *
      * @throws ApiResponseException
      * @throws AuthException
      */
@@ -41,30 +40,30 @@ class Http
     ) {
         $options = array_merge(
             [
-                'method'      => 'GET',
+                'method' => 'GET',
                 'contentType' => 'application/json',
-                'postFields'  => null,
-                'queryParams' => null
+                'postFields' => null,
+                'queryParams' => null,
             ],
             $options
         );
 
         $headers = array_merge([
-            'Accept'       => 'application/json',
+            'Accept' => 'application/json',
             'Content-Type' => $options['contentType'],
-            'User-Agent'   => $client->getUserAgent()
+            'User-Agent' => $client->getUserAgent(),
         ], $client->getHeaders());
 
         $request = new Request(
             $options['method'],
-            $client->getApiUrl() . $client->getApiBasePath() . $endPoint,
+            $client->getApiUrl().$client->getApiBasePath().$endPoint,
             $headers
         );
 
         $requestOptions = [];
 
         if (! empty($options['multipart'])) {
-            $request                     = $request->withoutHeader('Content-Type');
+            $request = $request->withoutHeader('Content-Type');
             $requestOptions['multipart'] = $options['multipart'];
         } elseif (! empty($options['postFields'])) {
             $request = $request->withBody(Utils::streamFor(json_encode($options['postFields'])));
@@ -73,20 +72,20 @@ class Http
                 $request = $request->withBody($options['file']);
             } elseif (is_file($options['file'])) {
                 $fileStream = new LazyOpenStream($options['file'], 'r');
-                $request    = $request->withBody($fileStream);
+                $request = $request->withBody($fileStream);
             }
         }
 
         if (! empty($options['queryParams'])) {
             foreach ($options['queryParams'] as $queryKey => $queryValue) {
-                $uri     = $request->getUri();
-                $uri     = $uri->withQueryValue($uri, $queryKey, $queryValue);
+                $uri = $request->getUri();
+                $uri = $uri->withQueryValue($uri, $queryKey, $queryValue);
                 $request = $request->withUri($uri, true);
             }
         }
 
         try {
-            list ($request, $requestOptions) = $client->getAuth()->prepareRequest($request, $requestOptions);
+            [$request, $requestOptions] = $client->getAuth()->prepareRequest($request, $requestOptions);
             $response = $client->guzzle->send($request, $requestOptions);
         } catch (RequestException $e) {
             $requestException = RequestException::create($e->getRequest(), $e->getResponse(), $e);

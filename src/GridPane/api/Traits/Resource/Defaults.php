@@ -1,11 +1,9 @@
 <?php
 
-namespace GridPane\API\Traits\Resource;
+namespace GridPane\Api\Traits\Resource;
 
 /**
  * This trait gives resources access to the default CRUD methods.
- *
- * @package GridPane\API\Traits\Resource
  */
 trait Defaults
 {

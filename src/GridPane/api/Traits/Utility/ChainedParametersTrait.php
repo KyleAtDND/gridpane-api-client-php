@@ -1,18 +1,16 @@
 <?php
 
-namespace GridPane\API\Traits\Utility;
+namespace GridPane\Api\Traits\Utility;
 
 /**
  * The chained parameters trait which has helper methods for getting the parameters passed through chaining.
  * An example would be a call `$client->ticket(2)->comments(3)->author();` would create an Author object with
  * chained parameters (An Array):
  *  [
- *      'GridPane\API\Tickets' => 2,
- *      'GridPane\API\Comments' => 3
+ *      'GridPane\Api\Tickets' => 2,
+ *      'GridPane\Api\Comments' => 3
  *  ]
- * @package GridPane\API
  */
-
 trait ChainedParametersTrait
 {
     /**
@@ -23,9 +21,8 @@ trait ChainedParametersTrait
     /**
      * Returns the named chained parameter
      *
-     * @param      $name
-     * @param null $default
-     *
+     * @param    $name
+     * @param  null  $default
      * @return $this
      */
     public function getChainedParameter($name, $default = null)
@@ -40,6 +37,7 @@ trait ChainedParametersTrait
 
     /**
      * Returns chained parameters
+     *
      * @return array
      */
     public function getChainedParameters()
@@ -51,7 +49,6 @@ trait ChainedParametersTrait
      * Sets the chained parameters
      *
      * @param $params
-     *
      * @return $this
      */
     public function setChainedParameters($params)
@@ -64,11 +61,10 @@ trait ChainedParametersTrait
     /**
      * A helper method to add the chained parameters to the existing parameters.
      *
-     * @param array $params The existing parameters
-     * @param array $map    An array describing what parameter key corresponds to which classId
-     *                      e.g. ['ticket_id' => 'GridPane\API\Ticket']
+     * @param  array  $params The existing parameters
+     * @param  array  $map    An array describing what parameter key corresponds to which classId
+     *                      e.g. ['ticket_id' => 'GridPane\Api\Ticket']
      *                      normal usage would be ['id' => $this::class]
-     *
      * @return array
      */
     public function addChainedParametersToParams($params, $map)
@@ -86,8 +82,7 @@ trait ChainedParametersTrait
     /**
      * Returns the named chained parameter
      *
-     * @param array $excludes Pass an array of classnames to exclude from query
-     *
+     * @param  array  $excludes Pass an array of classnames to exclude from query
      * @return array
      */
     public function getLatestChainedParameter($excludes = [])

@@ -1,19 +1,17 @@
 <?php
 
-namespace GridPane\API\Traits\Resource;
+namespace GridPane\Api\Traits\Resource;
 
-use GridPane\API\Exceptions\RouteException;
+use GridPane\Api\Exceptions\RouteException;
 
 trait Update
 {
-
     /**
      * Update a resource
      *
-     * @param int $id
-     * @param array $updateResourceFields
-     *
-     * @param string $routeKey
+     * @param  int  $id
+     * @param  array  $updateResourceFields
+     * @param  string  $routeKey
      * @return null|\stdClass
      */
     public function update($id = null, array $updateResourceFields = [], $routeKey = __FUNCTION__)
@@ -30,8 +28,8 @@ trait Update
                 $this->resourceName = $this->getResourceNameFromClass();
             }
 
-            $this->setRoute(__FUNCTION__, $this->resourceName . '/{id}');
-            $route = $this->resourceName . '/' . $id . '';
+            $this->setRoute(__FUNCTION__, $this->resourceName.'/{id}');
+            $route = $this->resourceName.'/'.$id.'';
         }
 
         return $this->client->put(
