@@ -2,14 +2,14 @@
 
 namespace GridPane\Console;
 
+use GridPane\Api\Exceptions\ApiResponseException;
+use GridPane\Api\HttpClient;
 use Psy\Configuration;
 use RuntimeException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use GridPane\API\Exceptions\ApiResponseException;
-use GridPane\API\HttpClient;
 
 class ConsoleCommand extends Command
 {
@@ -29,12 +29,11 @@ class ConsoleCommand extends Command
     /**
      * Execute the command.
      *
-     * @param  \Symfony\Component\Console\Input\InputInterface $input
-     * @param  \Symfony\Component\Console\Output\OutputInterface $output
+     * @param  \Symfony\Component\Console\Input\InputInterface  $input
+     * @param  \Symfony\Component\Console\Output\OutputInterface  $output
+     * @return void
      *
      * @throws RuntimeException
-     *
-     * @return void
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
@@ -46,8 +45,8 @@ class ConsoleCommand extends Command
         try {
             $data = $client->users()->me();
             $config->setStartupMessage(
-                '<fg=green>Hi ' .
-                $data->user->name .
+                '<fg=green>Hi '.
+                $data->user->name.
                 '. An instance of HttpClient using your credentials is stored on $client variable.</>'
             );
         } catch (ApiResponseException $e) {
