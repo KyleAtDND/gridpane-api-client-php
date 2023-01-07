@@ -29,7 +29,8 @@
     },
     "autoload": {
         "psr-4": {
-            "GridPane\\": "src/"
+            "GridPane\\Api\\": "src/api",
+            "GridPane\\Console\\": "src/console"
         }
     }
 }
