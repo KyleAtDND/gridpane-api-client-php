@@ -15,6 +15,8 @@ This client **only** supports GridPane's API v1.  Please see their [API document
 
 The GridPane API PHP SDK client can be installed using [Composer](https://packagist.org/packages/kylewlawrence/gridpane-api-client-php).
 
+Are you using this with Laravel? If so, use the [Laravel wrapper](https://github.com/KyleWLawrence/gridpane-laravel).
+
 ### Composer
 
 To install run `composer require kylewlawrence/gridpane-api-client-php`
