@@ -72,9 +72,32 @@ $users = $client->sites()->getAll();
 print_r($users);
 ```
 
-## Discovering Methods
+## Discovering Methods & Classes
 
 ``` php
+// Get the base methods/classes available
+$client->getValidSubResrouces()
+
+// The above example will output something like:
+[
+    "backups" => "GridPane\Api\Resources\Core\Backups",
+    "bundle" => "GridPane\Api\Resources\Core\Bundle",
+    "domain" => "GridPane\Api\Resources\Core\Domain",
+    "server" => "GridPane\Api\Resources\Core\Server",
+    "site" => "GridPane\Api\Resources\Core\Site",
+    "systemUser" => "GridPane\Api\Resources\Core\SystemUser",
+    "teams" => "GridPane\Api\Resources\Core\Teams",
+    "user" => "GridPane\Api\Resources\Core\User",
+]
+
+// These are methods/classes that can be chained to the client. For instance:
+// For instnace, "backups" => "GridPane\Api\Resources\Core\Backups", can be used as $client->backups()
+
+// To find the chained methods available to the class, now do:
+$client->backups()->getRoutes()
+
+// The above example will output something like:
+
 ```
 
 ### Pagination

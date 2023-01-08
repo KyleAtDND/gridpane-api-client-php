@@ -45,6 +45,14 @@ class Site extends ResourceAbstract
     ];
 
     /**
+     *  Mandatory delete site params
+     */
+    public static $delete_params = [
+        'site_id',
+        'server_id',
+    ];
+
+    /**
      * {@inheritdoc}
      */
     public static function getValidSubResources()
@@ -61,34 +69,58 @@ class Site extends ResourceAbstract
         parent::setUpRoutes();
 
         $this->setRoutes([
-            'delete' => 'site/{id}',
+            'getAll' => 'site',
+            'get' => 'site/{id}',
+            'create' => 'site',
+            'update' => 'site/{id}',
             'runCLICommand' => 'site/run-wp-cli/{id}',
             'addWPUser' => 'site/add-wp-user/{id}',
+            'delete' => 'site',
+            'deleteByID' => 'site/{id}',
         ]);
     }
 
     /**
      * Deletes a site, include the serverId to avoid mistakes
      *
-     * @param  int  $siteId
-     * @param  int  $serverId
+     * @param  array  $params
      * @return \stdClass | null
      *
      * @throws MissingParametersException
      * @throws ResponseException
      * @throws \Exception
      */
-    public function delete(int $siteId = null, int $serverId = null)
+    public function delete(array $params)
     {
-        if (empty($siteId)) {
+        if (! $this->hasKeys($params, self::$delete_params)) {
+            throw new MissingParametersException(__METHOD__, self::$delete_params);
+        }
+
+        $route = $this->getRoute('delete');
+
+        return $this->client->delete(
+            $route,
+            $params
+        );
+    }
+
+    /**
+     * Delete site by ID
+     *
+     * @param  int  $id
+     * @return \stdClass | null
+     *
+     * @throws MissingParametersException
+     * @throws ResponseException
+     * @throws \Exception
+     */
+    public function deleteByID(int $id)
+    {
+        if (empty($id)) {
             throw new MissingParametersException(__METHOD__, ['id']);
         }
 
-        $params = (empty($serverId)) ? [] : ['site_id' => $siteId, 'server_id' => $serverId];
-
-        $route = $this->getRoute('delete', ['id' => $siteId]);
-
-        return $this->client->delete($route, $params);
+        return $this->traitDelete($id, __FUNCTION__);
     }
 
     /**

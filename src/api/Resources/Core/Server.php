@@ -60,9 +60,14 @@ class Server extends ResourceAbstract
         parent::setUpRoutes();
 
         $this->setRoutes([
-            'getProgress' => 'server/build-progress/{id}',
+            'getAll' => 'server',
+            'get' => 'server/{id}',
             'getPlans' => 'server/{id}/plans',
+            'getProgress' => 'server/build-progress/{id}',
             'clone' => 'server/{id}',
+            'update' => 'server/{id}',
+            'create' => 'server/{id}',
+            'delete' => 'server/{id}',
         ]);
     }
 

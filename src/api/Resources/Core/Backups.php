@@ -110,7 +110,6 @@ class Backups extends ResourceAbstract
         parent::setUpRoutes();
 
         $this->setRoutes([
-            'create' => 'backups/{id}',
             'refreshSiteAvailable' => 'backups/refresh/{id}',
             'getOriginalSource' => 'backups/original/{id}',
             'getAlternativeSources' => 'backups/alternative-source/{id}',
@@ -122,6 +121,7 @@ class Backups extends ResourceAbstract
             'getSiteSchedules' => 'backups/schedules/site/{id}',
             'getPruneSchedule' => 'backups/prune-schedule/{id}',
             'addIntegration' => 'backups/integrations/{id}',
+            'create' => 'backups/{id}',
             'checkAlternatives' => 'backups/refresh-alternatives/{id}',
             'restore' => 'backups/restore/{id}',
             'updateAutomatic' => 'backups/automatic/{id}',

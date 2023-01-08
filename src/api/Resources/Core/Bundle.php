@@ -54,12 +54,18 @@ class Bundle extends ResourceAbstract
         parent::setUpRoutes();
 
         $this->setRoutes([
+            'getAll' => 'bundle',
+            'get' => 'bundle/{id}',
+            'create' => 'bundle',
+            'update' => 'bundle/{id}',
             'addTheme' => 'bundle/{id}/theme',
             'addPlugin' => 'bundle/{id}/plugin',
-            'removeTheme' => 'bundle/{id}/theme/{subjectId}',
-            'removePlugin' => 'bundle/{id}/plugin/{subjectId}',
+            'update' => 'bundle/{id}',
             'updateTheme' => 'bundle/{id}/theme/{subjectId}',
             'updatePlugin' => 'bundle/{id}/plugin/{subjectId}',
+            'delete' => 'bundle',
+            'removeTheme' => 'bundle/{id}/theme/{subjectId}',
+            'removePlugin' => 'bundle/{id}/plugin/{subjectId}',
         ]);
     }
 

@@ -44,6 +44,14 @@ class SystemUser extends ResourceAbstract
     protected function setUpRoutes()
     {
         parent::setUpRoutes();
+
+        $this->setRoutes([
+            'getAll' => 'system-user',
+            'get' => 'system-user/{id}',
+            'create' => 'system-user',
+            'update' => 'system-user/{id}',
+            'delete' => 'system-user/{id}',
+        ]);
     }
 
     /**

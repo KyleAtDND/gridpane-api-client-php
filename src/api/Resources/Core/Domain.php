@@ -48,6 +48,11 @@ class Domain extends ResourceAbstract
         parent::setUpRoutes();
 
         $this->setRoutes([
+            'getAll' => 'domain',
+            'get' => 'domain/{id}',
+            'create' => 'domain',
+            'update' => 'domain/{id}',
+            'delete' => 'domain/{id}',
         ]);
     }
 

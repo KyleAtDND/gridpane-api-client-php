@@ -49,6 +49,7 @@ class User extends ResourceAbstract
         $this->setRoutes([
             'getCurrentIntegrations' => 'user/integrations',
             'getCurrent' => 'user',
+            'create' => 'user',
         ]);
     }
 
