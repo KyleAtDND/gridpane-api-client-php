@@ -66,8 +66,8 @@ $client->servers()->update(12345,[
 $client->servers()->delete(12345);
 
 // Get all sites
-$users = $client->sites()->getAll();
-print_r($users);
+$sites = $client->sites()->getAll();
+print_r($sites);
 ```
 
 ## Discovering Methods & Classes
