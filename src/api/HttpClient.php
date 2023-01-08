@@ -9,7 +9,14 @@ namespace GridPane\Api;
 
 use GridPane\Api\Exceptions\AuthException;
 use GridPane\Api\Middleware\RetryHandler;
+use GridPane\Api\Resources\Core\Backups;
+use GridPane\Api\Resources\Core\Bundle;
+use GridPane\Api\Resources\Core\Domain;
 use GridPane\Api\Resources\Core\Server;
+use GridPane\Api\Resources\Core\Site;
+use GridPane\Api\Resources\Core\SystemUser;
+use GridPane\Api\Resources\Core\Teams;
+use GridPane\Api\Resources\Core\User;
 use GridPane\Api\Traits\Utility\InstantiatorTrait;
 use GridPane\Api\Utilities\Auth;
 use GuzzleHttp\Exception\RequestException;
@@ -18,7 +25,14 @@ use GuzzleHttp\HandlerStack;
 /**
  * Client class, base level access
  *
+ * @method Backups backups()
+ * @method Bundle bundle($id = null)
+ * @method Domain domain($id = null)
  * @method Server server($id = null)
+ * @method Site site($id = null)
+ * @method SystemUser systemUser($id = null)
+ * @method Teams teams()
+ * @method User user()
  */
 class HttpClient
 {
@@ -100,7 +114,14 @@ class HttpClient
     public static function getValidSubResources()
     {
         return [
+            'backups' => Backups::class,
+            'bundle' => Bundle::class,
+            'domain' => Domain::class,
             'server' => Server::class,
+            'site' => Site::class,
+            'systemUser' => SystemUser::class,
+            'teams' => Teams::class,
+            'user' => User::class,
         ];
     }
 
@@ -271,7 +292,7 @@ class HttpClient
     /**
      * This is a helper method to do a put request.
      *
-     * @param    $endpoint
+     * @param  string  $endpoint
      * @param  array  $putData
      * @return \stdClass | null
      *
@@ -292,7 +313,8 @@ class HttpClient
     /**
      * This is a helper method to do a delete request.
      *
-     * @param $endpoint
+     * @param  string  $endpoint
+     * @param  array  $endpoint
      * @return null
      *
      * @throws \GridPane\Api\Exceptions\AuthException

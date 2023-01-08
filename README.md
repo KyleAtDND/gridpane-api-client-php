@@ -1,8 +1,8 @@
-# GridPane PHP API Client Library #
+# GridPane API PHP SDK Client Library #
 
 ## API Client Version
 
-This is the first version of a community sponsored PHP API client for GridPane.
+This is the first version of a community sponsored PHP SDK client for GridPane API.
 
 ## API version support
 
@@ -13,11 +13,11 @@ This client **only** supports GridPane's API v1.  Please see their [API document
 
 ## Installation
 
-The GridPane PHP API client can be installed using [Composer](https://packagist.org/packages/kyleatdnd/gridpane-api-client-php).
+The GridPane API PHP SDK client can be installed using [Composer](https://packagist.org/packages/kylewlawrence/gridpane-api-client-php).
 
 ### Composer
 
-To install run `composer require kyleatdnd/gridpane-api-client-php`
+To install run `composer require kylewlawrence/gridpane-api-client-php`
 
 ## Configuration
 
@@ -30,10 +30,10 @@ require 'vendor/autoload.php';
 
 use GridPane\API\HttpClient as GridPaneAPI;
 
-$token     = "6wiIBWbGkBMo1mRDMuVwkw1EPsNkeUj95PIz2akv"; // replace this with your GridPane Personal Access/Bearer token
+$bearer     = "6wiIBWbGkBMo1mRDMuVwkw1EPsNkeUj95PIz2akv"; // replace this with your GridPane Personal Access/Bearer token
 
 $client = new GridPaneAPI();
-$client->setAuth('bearer', ['token' => $token]);
+$client->setAuth('bearer', ['bearer' => $bearer]);
 ```
 
 ## Usage
@@ -70,6 +70,11 @@ $client->servers()->delete(12345);
 // Get all sites
 $users = $client->sites()->getAll();
 print_r($users);
+```
+
+## Discovering Methods
+
+``` php
 ```
 
 ### Pagination

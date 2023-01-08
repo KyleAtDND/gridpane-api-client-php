@@ -43,7 +43,7 @@ class ConsoleCommand extends Command
         $client->setAuth('bearer', ['bearer' => $input->getArgument('bearer')]);
 
         try {
-            $data = $client->user()->find();
+            $data = $client->user()->getCurrent();
             $config->setStartupMessage(
                 '<fg=green>Hi '.
                 $data->name.
