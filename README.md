@@ -47,10 +47,6 @@ $client->setAuth('bearer', ['bearer' => $bearer]);
 $servers = $client->servers()->getAll();
 print_r($servers);
 
-// Get all servers regarding a specific user.
-// $servers = $client->users($requesterId)->servers()->requested();
-// print_r($servers);
-
 // Create a new server
 $newServer = $client->servers()->create([
     'servername' => 'hal9000',                          
