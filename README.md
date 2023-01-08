@@ -91,13 +91,25 @@ $client->getValidSubResrouces()
 ]
 
 // These are methods/classes that can be chained to the client. For instance:
-// For instnace, "backups" => "GridPane\Api\Resources\Core\Backups", can be used as $client->backups()
+// For instance, "backups" => "GridPane\Api\Resources\Core\Backups", can be used as $client->backups()
 
 // To find the chained methods available to the class, now do:
-$client->backups()->getRoutes()
+$client->site()->getRoutes()
 
 // The above example will output something like:
+[
+    "getAll" => "site",
+    "get" => "site/{id}",
+    "create" => "site",
+    "update" => "site/{id}",
+    "runCLICommand" => "site/run-wp-cli/{id}",
+    "addWPUser" => "site/add-wp-user/{id}",
+    "delete" => "site",
+    "deleteByID" => "site/{id}",
+]
 
+// Those routes can be compared with the GridPane documentation routes and run as chained methods such as the below command to get all sites:
+$client->site()->getAll()
 ```
 
 ### Pagination
