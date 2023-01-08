@@ -42,7 +42,7 @@ $client->setAuth('bearer', ['token' => $token]);
 
 ``` php
 // Get all servers
-$servers = $client->servers()->findAll();
+$servers = $client->servers()->getAll();
 print_r($servers);
 
 // Get all servers regarding a specific user.
@@ -65,20 +65,21 @@ $client->servers()->update(12345,[
 ]);
 
 // Delete a server
-$client->servers()->delete(1);
+$client->servers()->delete(12345);
 
 // Get all sites
-$users = $client->sites()->findAll();
+$users = $client->sites()->getAll();
 print_r($users);
 ```
 
 ### Pagination
+
 The GridPane API offers a way to get the next pages for the requests and is documented in [the GridPane Developer Documentation](https://developer.zendesk.com/rest_api/docs/core/introduction#pagination).
 
 The way to do this is to pass it as an option to your request.
 
 ``` php
-$servers = $this->client->servers()->findAll(['per_page' => 100, 'page' => 2]);
+$servers = $this->client->servers()->getAll(['per_page' => 100, 'page' => 2]);
 ```
 
 The allowed options are
@@ -94,6 +95,7 @@ retries:
 * and those that throw `Psr\Http\Message\RequestInterface\RequestException:class` that are identified as ssl issue.
 
 #### Available options
+
 Options are passed on `RetryHandler` as an array of values.
 
 * max = 2 _limit of retries_
@@ -105,15 +107,7 @@ Options are passed on `RetryHandler` as an array of values.
 
 ## Contributing
 
-Pull Requests are always welcome but before you send one please read our [contribution guidelines](#CONTRIBUTING.md). It would
-speed up the process and would make sure that everybody follows the community's standard.
-
-### Debugging
-
-To help would be contributors, we've added a REPL tool. It is a simple wrapper for [psysh](http://psysh.org) and symfony's console.
-On your terminal, run `bin/console <bearer token>`. This would automatically create an instance of `GridPane\API\HttpClient` on $client variable.
-After that you would be able to enter any valid php statement. The goal of the tool is to speed up the process in which developers
-can experiment on the code base.
+Pull Requests are always welcome. I'll catch-up and develop the contribution guidelines soon. For the meantime, just open and issue or create a pull request.
 
 ## Copyright and license
 

@@ -47,11 +47,6 @@ class HttpClient
     protected $hostname;
 
     /**
-     * @var int
-     */
-    protected $port;
-
-    /**
      * @var string
      */
     protected $apiUrl;
@@ -74,13 +69,11 @@ class HttpClient
     /**
      * @param  string  $scheme
      * @param  string  $hostname
-     * @param  int  $port
      * @param  \GuzzleHttp\Client  $guzzle
      */
     public function __construct(
         $scheme = 'https',
-        $hostname = 'zendesk.com',
-        $port = 443,
+        $hostname = 'my.gridpane.com',
         $guzzle = null
     ) {
         if (is_null($guzzle)) {
@@ -95,8 +88,7 @@ class HttpClient
 
         $this->hostname = $hostname;
         $this->scheme = $scheme;
-        $this->port = $port;
-        $this->apiUrl = "$scheme://$hostname:$port/";
+        $this->apiUrl = "$scheme://$hostname/";
         $this->debug = new Debug();
     }
 
@@ -108,7 +100,7 @@ class HttpClient
     public static function getValidSubResources()
     {
         return [
-            'Server' => Server::class,
+            'server' => Server::class,
         ];
     }
 
@@ -306,12 +298,12 @@ class HttpClient
      * @throws \GridPane\Api\Exceptions\AuthException
      * @throws \GridPane\Api\Exceptions\ApiResponseException
      */
-    public function delete($endpoint)
+    public function delete($endpoint, $deleteData = [])
     {
         $response = Http::send(
             $this,
             $endpoint,
-            ['method' => 'DELETE']
+            ['postFields' => $deleteData, 'method' => 'DELETE']
         );
 
         return $response;

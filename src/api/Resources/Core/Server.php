@@ -2,13 +2,15 @@
 
 namespace GridPane\Api\Resources\Core;
 
+use GridPane\API\Exceptions\InvalidParametersException;
+use GridPane\API\Exceptions\MissingParametersException;
 use GridPane\Api\Exceptions\ResponseException;
 use GridPane\Api\Resources\ResourceAbstract;
 use GridPane\Api\Traits\Resource\Defaults;
 use GridPane\Api\Traits\Utility\InstantiatorTrait;
 
 /**
- * The Tickets class exposes key methods for reading and updating ticket data
+ * The Server class exposes key methods for reading and updating a server
  *
  * @method Server server()
  */
@@ -17,8 +19,29 @@ class Server extends ResourceAbstract
     use InstantiatorTrait;
     use Defaults {
         create as traitCreate;
-        update as traitUpdate;
     }
+
+    /**
+     * Valid server providers
+     */
+    public static $providers = [
+        'vultr',
+        'linode',
+        'aws-lightsail',
+        'digitalocean',
+        'upcloud',
+    ];
+
+    /**
+     *  Mandatory create server keys
+     */
+    public static $create_params = [
+        'servername',
+        'ip',
+        'datacenter',
+        'webserver',
+        'database',
+    ];
 
     /**
      * {@inheritdoc}
@@ -35,11 +58,58 @@ class Server extends ResourceAbstract
     protected function setUpRoutes()
     {
         parent::setUpRoutes();
+
+        $this->setRoutes([
+            'getProgress' => 'server/build-progress/{id}',
+            'getPlans' => 'server/{id}/plans',
+            'clone' => 'server/{id}',
+        ]);
     }
 
     /**
-     * Create a ticket
+     * Show build progress on server
      *
+     * @param  int  $provider
+     * @return \stdClass | null
+     *
+     * @throws MissingParametersException
+     * @throws ResponseException
+     * @throws \Exception
+     */
+    public function getProgress(int $id = null)
+    {
+        if (empty($id)) {
+            throw new MissingParametersException(__METHOD__, ['id']);
+        }
+
+        return $this->get($id, [], __FUNCTION__);
+    }
+
+    /**
+     * List plans from provider
+     *
+     * @param  string  $provider
+     * @return \stdClass | null
+     *
+     * @throws MissingParametersException
+     * @throws ResponseException
+     * @throws \Exception
+     */
+    public function getPlans(string $provider = null)
+    {
+        if (empty($provider)) {
+            throw new MissingParametersException(__METHOD__, ['provider']);
+        } elseif (! in_array($provider, self::$providers)) {
+            throw new InvalidParametersException(__METHOD__, ['provider'], self::$providers);
+        }
+
+        return $this->get($provider, [], __FUNCTION__);
+    }
+
+    /**
+     * Create a server
+     *
+     * @param  string  $provider
      * @param  array  $params
      * @return \stdClass | null
      *
@@ -48,35 +118,40 @@ class Server extends ResourceAbstract
      * @throws \GridPane\Api\Exceptions\AuthException
      * @throws \GridPane\Api\Exceptions\ApiResponseException
      */
-    public function create(array $params)
+    public function create(string $provider, array $params)
     {
-        $extraOptions = [];
-        if (isset($params['async']) && ($params['async'] == true)) {
-            $extraOptions = [
-                'queryParams' => [
-                    'async' => true,
-                ],
-            ];
+        $providerList = array_merge(self::$providers, ['custom']);
+        if (empty($provider)) {
+            throw new MissingParametersException(__METHOD__, ['provider']);
+        } elseif (! in_array($provider, $providerList)) {
+            throw new InvalidParametersException(__METHOD__, ['provider'], $providerList);
+        } elseif (! $this->hasKeys($params, self::$create_params)) {
+            throw new MissingParametersException(__METHOD__, self::$create_params);
         }
 
-        $route = $this->getRoute(__FUNCTION__, $params);
+        $route = $this->getRoute(__FUNCTION__, ['id' => $provider]);
 
         return $this->client->post(
             $route,
-            [$this->objectName => $params],
-            $extraOptions
+            $params
         );
     }
 
     /**
-     * Update a ticket or series of tickets
+     * Clone all sites on one server to another
      *
      * @param  int  $id
-     * @param  array  $updateResourceFields
+     * @param  array  $params
      * @return null|\stdClass
      */
-    public function update($id = null, array $updateResourceFields = [])
+    public function clone($id = null, array $params = [])
     {
-        return $this->traitUpdate($id, $updateResourceFields);
+        if (empty($id)) {
+            throw new MissingParametersException(__METHOD__, ['id']);
+        } elseif (! $this->hasKeys($params, ['clone_to_server'])) {
+            throw new MissingParametersException(__METHOD__, ['clone_to_server']);
+        }
+
+        return $this->update($id, $params);
     }
 }

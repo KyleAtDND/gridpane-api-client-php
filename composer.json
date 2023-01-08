@@ -1,17 +1,18 @@
 {
-    "name": "kyleatdnd/gridpane-api-client-php",
+    "name": "kylewlawrence/gridpane-api-client-php",
     "type": "library",
     "description": "GridPane API PHP SDK",
     "minimum-stability": "alpha",
     "keywords": [
-        "gridpane"
+        "gridpane",
+        "php-sdk"
     ],
     "homepage": "http://designanddevelop.io",
     "license": "MIT",
     "authors": [
         {
-            "name": "KyleAtDND",
-            "email": "Wesley@DesignAndDevelop.io"
+            "name": "KyleWLawrence",
+            "email": "Kyle@DesignAndDevelop.io"
         }
     ],
     "require": {
@@ -25,7 +26,7 @@
         "squizlabs/php_codesniffer": "2.*",
         "phpmd/phpmd": "@stable",
         "fzaninotto/faker": ">=1.5.0",
-        "psy/psysh": "@stable"
+        "psy/psysh": "@latest"
     },
     "autoload": {
         "psr-4": {

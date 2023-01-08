@@ -4,7 +4,7 @@ namespace GridPane\Api\Traits\Resource;
 
 use GridPane\Api\Exceptions\RouteException;
 
-trait FindAll
+trait GetAll
 {
     /**
      * List all of this resource
@@ -16,8 +16,10 @@ trait FindAll
      * @throws \GridPane\Api\Exceptions\AuthException
      * @throws \GridPane\Api\Exceptions\ApiResponseException
      */
-    public function findAll(array $params = [], $routeKey = __FUNCTION__)
+    public function getAll(array $params = [], $routeKey = __FUNCTION__)
     {
+        $params = array_merge(['per_page' => 100], $params);
+
         try {
             $route = $this->getRoute($routeKey, $params);
         } catch (RouteException $e) {
@@ -25,7 +27,7 @@ trait FindAll
                 $this->resourceName = $this->getResourceNameFromClass();
             }
 
-            $route = $this->resourceName.'';
+            $route = $this->resourceName;
             $this->setRoute(__FUNCTION__, $route);
         }
 

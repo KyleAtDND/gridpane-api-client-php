@@ -2,8 +2,8 @@
 
 namespace GridPane\Api\Resources;
 
-use Doctrine\Inflector;
 use Doctrine\Inflector\CachedWordInflector;
+use Doctrine\Inflector\Inflector;
 use Doctrine\Inflector\Rules\English;
 use Doctrine\Inflector\RulesetInflector;
 use GridPane\Api\Exceptions\RouteException;
@@ -60,7 +60,7 @@ abstract class ResourceAbstract
     /**
      * @param  HttpClient  $client
      */
-    public function __construct(HttpClient $client, $apiBasePath = 'api/v1/')
+    public function __construct(HttpClient $client, $apiBasePath = 'oauth/api/v1/')
     {
         $this->apiBasePath = $apiBasePath;
         $this->client = $client;

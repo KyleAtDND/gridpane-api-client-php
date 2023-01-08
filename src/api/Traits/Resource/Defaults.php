@@ -7,8 +7,8 @@ namespace GridPane\Api\Traits\Resource;
  */
 trait Defaults
 {
-    use Find;
-    use FindAll;
+    use Get;
+    use GetAll;
     use Delete;
     use Create;
     use Update;

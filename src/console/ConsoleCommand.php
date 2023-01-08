@@ -23,7 +23,7 @@ class ConsoleCommand extends Command
         $this
             ->setName('console')
             ->setDescription('Test out features of the php api client.')
-            ->addArgument('token', InputArgument::OPTIONAL);
+            ->addArgument('bearer', InputArgument::REQUIRED);
     }
 
     /**
@@ -40,13 +40,13 @@ class ConsoleCommand extends Command
         $config = new Configuration;
 
         $client = new HttpClient();
-        $client->withToken($input->getArgument('token'));
+        $client->setAuth('bearer', ['bearer' => $input->getArgument('bearer')]);
 
         try {
-            $data = $client->users()->me();
+            $data = $client->user()->find();
             $config->setStartupMessage(
                 '<fg=green>Hi '.
-                $data->user->name.
+                $data->name.
                 '. An instance of HttpClient using your credentials is stored on $client variable.</>'
             );
         } catch (ApiResponseException $e) {

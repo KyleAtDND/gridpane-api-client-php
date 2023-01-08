@@ -28,7 +28,7 @@ trait Create
 
         return $this->client->post(
             $route,
-            [$this->objectName => $params]
+            $params
         );
     }
 }

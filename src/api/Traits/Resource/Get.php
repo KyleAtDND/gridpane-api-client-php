@@ -5,10 +5,10 @@ namespace GridPane\Api\Traits\Resource;
 use GridPane\Api\Exceptions\MissingParametersException;
 use GridPane\Api\Exceptions\RouteException;
 
-trait Find
+trait Get
 {
     /**
-     * Find a specific ticket by id or series of ids
+     * Get a specific ticket by id or series of ids
      *
      * @param    $id
      * @param  array  $queryParams
@@ -17,7 +17,7 @@ trait Find
      *
      * @throws MissingParametersException
      */
-    public function find($id = null, array $queryParams = [], $routeKey = __FUNCTION__)
+    public function get($id = null, array $queryParams = [], $routeKey = __FUNCTION__)
     {
         if (empty($id)) {
             $id = $this->getChainedParameter(get_class($this));

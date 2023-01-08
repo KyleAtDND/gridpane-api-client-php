@@ -73,7 +73,7 @@ class Auth
     public function prepareRequest(RequestInterface $request, array $requestOptions = [])
     {
         if ($this->authStrategy === self::BEARER) {
-            $bearer = $this->authOptions['token'];
+            $bearer = $this->authOptions['bearer'];
             $request = $request->withAddedHeader('Authorization', ' Bearer '.$bearer);
         } else {
             throw new AuthException('Please set authentication to send requests.');
