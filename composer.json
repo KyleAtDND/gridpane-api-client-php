@@ -31,8 +31,8 @@
     },
     "autoload": {
         "psr-4": {
-            "GridPane\\Api\\": "src/api",
-            "GridPane\\Console\\": "src/console"
+            "KyleWLawrence\\GridPane\\Api\\": "src/Api",
+            "KyleWLawrence\\GridPane\\Console\\": "src/Console"
         }
     }
 }

@@ -7,3 +7,5 @@
 /phpcs.xml
 /.phpcs-cache
 /phpstan.neon
+
+/test/

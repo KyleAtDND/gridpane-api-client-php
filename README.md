@@ -30,7 +30,7 @@ The block is mandatory and if not passed, an error will be thrown.
 // load Composer
 require 'vendor/autoload.php';
 
-use GridPane\Api\HttpClient as GridPaneAPI;
+use KyleWLawrence\GridPane\Api\HttpClient as GridPaneAPI;
 
 $bearer     = "6wiIBWbGkBMo1mRDMuVwkw1EPsNkeUj95PIz2akv"; // replace this with your GridPane Personal Access/Bearer token
 
