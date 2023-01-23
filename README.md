@@ -23,14 +23,14 @@ To install run `composer require kylewlawrence/gridpane-api-client-php`
 
 ## Configuration
 
-Configuration is done through an instance of `GridPane\API\HttpClient`.
+Configuration is done through an instance of `GridPane\Api\HttpClient`.
 The block is mandatory and if not passed, an error will be thrown.
 
 ``` php
 // load Composer
 require 'vendor/autoload.php';
 
-use GridPane\API\HttpClient as GridPaneAPI;
+use GridPane\Api\HttpClient as GridPaneAPI;
 
 $bearer     = "6wiIBWbGkBMo1mRDMuVwkw1EPsNkeUj95PIz2akv"; // replace this with your GridPane Personal Access/Bearer token
 

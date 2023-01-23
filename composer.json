@@ -2,7 +2,7 @@
     "name": "kylewlawrence/gridpane-api-client-php",
     "type": "library",
     "description": "GridPane API PHP SDK",
-    "minimum-stability": "alpha",
+    "minimum-stability": "beta",
     "keywords": [
         "gridpane",
         "php-sdk"
@@ -26,7 +26,8 @@
         "squizlabs/php_codesniffer": "2.*",
         "phpmd/phpmd": "@stable",
         "fzaninotto/faker": ">=1.5.0",
-        "psy/psysh": "^0.11"
+        "psy/psysh": "^0.11",
+        "bshaffer/phpunit-retry-annotations": "^0.3.0"
     },
     "autoload": {
         "psr-4": {

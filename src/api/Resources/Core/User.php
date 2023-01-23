@@ -6,7 +6,6 @@ use GridPane\API\Exceptions\MissingParametersException;
 use GridPane\Api\Exceptions\ResponseException;
 use GridPane\Api\Resources\ResourceAbstract;
 use GridPane\Api\Traits\Resource\Create;
-use GridPane\Api\Traits\Resource\Get as getTrait;
 use GridPane\Api\Traits\Utility\InstantiatorTrait;
 
 /**
@@ -17,7 +16,6 @@ use GridPane\Api\Traits\Utility\InstantiatorTrait;
 class User extends ResourceAbstract
 {
     use InstantiatorTrait;
-    use getTrait;
     use Create;
 
     /**
@@ -64,7 +62,11 @@ class User extends ResourceAbstract
      */
     public function getCurrentIntegrations()
     {
-        return $this->getTrait(null, [], __FUNCTION__);
+        $route = $this->getRoute(__FUNCTION__);
+
+        return $this->client->get(
+            $route
+        );
     }
 
     /**
